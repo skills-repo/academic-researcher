@@ -15,6 +15,18 @@
 - **引文准确性是第一道关卡** — 一篇论文的参考文献就是它的信用记录
 - **LaTeX 不是障碍，是工具** — 掌握模板和自动化命令
 
+## 架构说明（superpower）
+
+本仓库采用 skills-repo 组织的 **superpower 架构**：
+
+- `SKILL.md` — 唯一入口，只做能力路由（本文件）
+- `references/` — 深层 playbook：检索策略、引文管理、论文组装验收
+- `skills/` — 4 个细粒度子技能，可单独安装
+- `scripts/` — `check_references.py` 参考文献格式自检（纯标准库、可复现）
+- `assets/` — 字段规则配置、合规 .bib 示例、论文结构清单模板
+
+渐进式加载：Agent 先读路由表，按需读取 `references/` 或 `skills/`，重复任务交给脚本。
+
 ## 技能清单
 
 | 环节 | 技能 | 描述 | 来源 |
@@ -24,9 +36,13 @@
 | 综述 | `literature-review` | 系统化文献综述：搜索策略、筛选标准、综合分析 | [衍生](https://skills.sh/affaan-m/everything-claude-code/literature-review) |
 | 引用 | `academic-citation` | 学术引文管理：格式校验、BibTeX 生成、完整性检查 | [衍生](https://skills.sh/yuan1z0825/nature-skills/nature-citation) |
 
-## 快速开始
+## 安装
 
 ```bash
+# 整库安装（推荐）—— 拿到路由层 + references + scripts + assets
+npx skills add skills-repo/academic-researcher
+
+# 单技能安装 —— 只要某一个细粒度能力
 npx skills add skills-repo/academic-researcher@paper-assembly -g -y
 npx skills add skills-repo/academic-researcher@latex-writer -g -y
 npx skills add skills-repo/academic-researcher@literature-review -g -y

@@ -1,6 +1,33 @@
 # Academic Researcher — Agent 入口
 
-> 本仓库是 skills-repo 组织下的学术研究者技能库。Agent 在处理论文撰写、LaTeX 排版、文献综述、引文管理等任务时加载本文件。
+> 本仓库是 skills-repo 组织下的学术研究者技能库。Agent 在处理论文撰写、LaTeX 排版、文献综述、引文管理等任务时加载本文件。采用 skills-repo 组织的 **superpower 架构**。
+
+## 目录约定（superpower）
+
+```
+academic-researcher/
+├── SKILL.md                     # L1 路由层：唯一入口，只做索引
+├── references/                  # L2 深层 playbook
+│   ├── literature-search-strategy.md
+│   ├── reference-management-playbook.md
+│   └── manuscript-assembly-checklist.md
+├── skills/                      # L3 细粒度子技能
+│   ├── paper-assembly/SKILL.md
+│   ├── latex-writer/SKILL.md
+│   ├── literature-review/SKILL.md
+│   └── academic-citation/SKILL.md
+├── scripts/                     # L4 确定性脚本：check_references.py
+├── assets/                      # L5 模板资源：reference_rules.json 等
+├── AGENTS.md / README.md / LICENSE / .gitignore
+```
+
+## 加载顺序（渐进式加载）
+
+1. 先读 `SKILL.md` 路由表，判断任务属于哪一类。
+2. **方法论决策**（检索策略 / 引文管理 / 论文组装验收）→ 读 `references/` 对应 playbook。
+3. **落地具体动作**（综述 / 组装 / 排版 / 引文）→ 调 `skills/<name>/SKILL.md`。
+4. **确定性自检**（BibTeX 字段/重复）→ 跑 `scripts/check_references.py`。
+5. 套用 `assets/` 模板，不重复造轮子。
 
 ## 技能清单
 

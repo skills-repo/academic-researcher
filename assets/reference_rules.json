@@ -1,0 +1,10 @@
+{
+  "_comment": "参考文献格式配置 —— scripts/check_references.py 的规则来源。以 _ 开头的键为注释/元信息，脚本加载时跳过。团队可按目标期刊调整必填字段。",
+  "required_fields_by_type": {
+    "article": ["author", "title", "journal", "year"],
+    "inproceedings": ["author", "title", "booktitle", "year"],
+    "book": ["author", "title", "publisher", "year"],
+    "misc": ["author", "title", "year"]
+  },
+  "detect_duplicate_title": true
+}

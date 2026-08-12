@@ -25,6 +25,7 @@ metadata:
 - 写综述前需要搜索/筛选/综合的方法论
 - 汇编论文章节，需要 IMRaD 验收与论证链检查
 - LaTeX 排版报错或要适配期刊模板
+- 给定一篇论文（PDF/arXiv/DOI），需要快速、可追溯的精读报告与阅读库沉淀
 - 需要校验 BibTeX/引文字段完整性与重复条目
 
 ## 能力索引（超级技能路由）
@@ -38,6 +39,8 @@ metadata:
 | 论文章节组装：大纲到草稿的结构化写作 | `skills/paper-assembly/SKILL.md` | 论文组装 章节 大纲 论证 摘要 一致性 |
 | LaTeX 排版：编译修复/期刊模板/图表 | `skills/latex-writer/SKILL.md` | LaTeX 排版 编译修复 期刊模板 图表 公式 |
 | 学术引文管理：格式校验/BibTeX/完整性 | `skills/academic-citation/SKILL.md` | 学术引文 格式校验 BibTeX 完整性 DOI |
+| 论文自动化：精读报告/证据链/阅读库沉淀 | `skills/paper-automation/SKILL.md` | 论文自动化 精读 xray 证据链 综述 autoresearch 阅读库 |
+| 论文自动化方法论：决策树/命令/坑/清单 | `references/paper-automation-playbook.md` | 精读 自动研究 分类 代码审计 出处 检查清单 |
 
 ## 内置脚本（确定性、可重复执行）
 
@@ -45,11 +48,14 @@ metadata:
 
 - `scripts/check_references.py bibtex --file <refs.bib>` — 校验字段完整性/重复键/重复标题
 - `scripts/check_references.py selfcheck` — 校验内置资产（规则+示例 .bib）0 ERROR
+- `scripts/scaffold_paper_report.py --title "..." --paper-type empirical --url <arXiv> --out note.md` — 生成可追溯的论文精读报告骨架
 
 运行示例：
 
 ```bash
 python3 scripts/check_references.py bibtex --file refs.bib
+python3 scripts/scaffold_paper_report.py --title "论文标题" --paper-type empirical \
+  --url "https://arxiv.org/abs/2401.00001" --out reading-notes/note.md
 ```
 
 ## 模板资源

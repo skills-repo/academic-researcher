@@ -20,9 +20,9 @@
 本仓库采用 skills-repo 组织的 **superpower 架构**：
 
 - `SKILL.md` — 唯一入口，只做能力路由（本文件）
-- `references/` — 深层 playbook：检索策略、引文管理、论文组装验收
-- `skills/` — 4 个细粒度子技能，可单独安装
-- `scripts/` — `check_references.py` 参考文献格式自检（纯标准库、可复现）
+- `references/` — 深层 playbook：检索策略、引文管理、论文组装验收、论文自动化
+- `skills/` — 5 个细粒度子技能，可单独安装
+- `scripts/` — `check_references.py` 参考文献格式自检、`scaffold_paper_report.py` 论文精读报告骨架生成（均纯标准库、可复现）
 - `assets/` — 字段规则配置、合规 .bib 示例、论文结构清单模板
 
 渐进式加载：Agent 先读路由表，按需读取 `references/` 或 `skills/`，重复任务交给脚本。
@@ -35,18 +35,20 @@
 | 排版 | `latex-writer` | LaTeX 论文排版：编译修复、期刊模板、图表公式 | [衍生](https://skills.sh/bahayonghang/academic-writing-skills/latex-paper-en) |
 | 综述 | `literature-review` | 系统化文献综述：搜索策略、筛选标准、综合分析 | [衍生](https://skills.sh/affaan-m/everything-claude-code/literature-review) |
 | 引用 | `academic-citation` | 学术引文管理：格式校验、BibTeX 生成、完整性检查 | [衍生](https://skills.sh/yuan1z0825/nature-skills/nature-citation) |
+| 自动化 | `paper-automation` | 论文自动化：给定一篇论文产出可追溯精读报告，并沉淀带出处的阅读库加速综述与自动研究 | [衍生](https://skills.sh/orchestra-research/ai-research-skills/autoresearch) |
 
 ## 安装
 
 ```bash
 # 整库安装（推荐）—— 拿到路由层 + references + scripts + assets
-npx skills add skills-repo/academic-researcher
+npx skills add skills-repo/academic-researcher -g -y
 
 # 单技能安装 —— 只要某一个细粒度能力
 npx skills add skills-repo/academic-researcher@paper-assembly -g -y
 npx skills add skills-repo/academic-researcher@latex-writer -g -y
 npx skills add skills-repo/academic-researcher@literature-review -g -y
 npx skills add skills-repo/academic-researcher@academic-citation -g -y
+npx skills add skills-repo/academic-researcher@paper-automation -g -y
 ```
 
 ## 推荐工作流
